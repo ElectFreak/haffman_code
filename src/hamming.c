@@ -88,11 +88,10 @@ void bits_to_msg(int* bits, char* msg, int len) {
 void reverse_random_bit(int* bit_seq, int size) {
   srand(time(0)); 
   int pos = rand() % size;
-  printf("reversed: %d", pos);
   bit_seq[pos] = 1 - bit_seq[pos];
 }
 
-int* blocks_to_code_words(int* bits, int size) {
+int* blocks_to_code_words(int* bits, int size) { 
   if ((size % 4) != 0) {
     printf("error\n");
   }
