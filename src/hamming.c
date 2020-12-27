@@ -92,20 +92,24 @@ void reverse_random_bit(int* bit_seq, int size) {
   bit_seq[pos] = 1 - bit_seq[pos];
 }
 
-int* bits_to_code_words(int* bits, int size) {
-  int* code_blocks = malloc(sizeof(int) * size / 4 * 7);
+int* blocks_to_code_words(int* bits, int size) {
+  if ((size % 4) != 0) {
+    printf("error\n");
+  }
+  int* code_words = malloc(sizeof(int) * (size / 4) * 7);
   for (int i = 0; i < size / 4; i++) {
-    get_code(bits + i * 4, code_blocks + i * 7);
+    get_code(bits + i * 4, code_words + i * 7);
   }
 
-  return code_blocks;
+  return code_words;
 }
 
 int* code_words_to_bits(int* code_blocks, int size) {
-  int* bits = malloc(sizeof(int) * size / 7 * 4);
+  int* bits = malloc(sizeof(int) * (size / 7) * 4);
   for (int i = 0; i < size / 7; i++) {
     decode(code_blocks + i * 7, bits + i * 4);
   }
+
   return bits;
 }
 
