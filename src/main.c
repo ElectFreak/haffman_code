@@ -16,7 +16,7 @@ int main(int argc, char** argv) {
   char* decode_msg = malloc(sizeof(char) * len + 1);
   int* code_words = blocks_to_code_words(bits, len * 8);
   
-  reverse_random_bit(code_words, len * 2 * 7);
+  // reverse_random_bit(code_words, len * 2 * 7);
   code_words[2] = 1 - code_words[2]; // reverse "random" bit
   int* broken_bits = code_words_to_bits(code_words, len * 2 * 7);
   bits_to_msg(broken_bits, decode_msg, len);
