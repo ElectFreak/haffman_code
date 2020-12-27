@@ -82,7 +82,7 @@ void bits_to_msg(int* bits, char* msg, int len) {
       msg[i] |= bits[i * 8 + j] << j;
   }
   
-  msg[len - 1] = 0;
+  msg[len] = 0;
 }
 
 void reverse_random_bit(int* bit_seq, int size) {
